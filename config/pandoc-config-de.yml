@@ -1,0 +1,15 @@
+figPrefix:
+  - Abbildung
+  - Abbildungen
+eqnPrefix:
+  - Gleichung
+  - Gleichungen
+tblPrefix:
+  - Tabelle
+  - Tabellen
+lstPrefix:
+  - Quellcode
+  - Quellcode
+secPrefix:
+  - Abschnitt
+  - Abschnitte
