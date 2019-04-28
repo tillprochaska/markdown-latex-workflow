@@ -1,5 +1,5 @@
 content = src/*.md
-resources = src/resources
+resources = src/
 lang = en
 output = dist/output.pdf
 
