@@ -1,6 +1,6 @@
-content = src/*.md
-resources = src/
-bibliography = src/bibliography/bibliography.bib
+src = src
+contents = $(src)/*.md
+bibliography = $(src)/bibliography/bibliography.bib
 lang = en
 output = dist/output.pdf
 
@@ -13,16 +13,14 @@ pandoc_options = \
 	--metadata linkReferences \
 	--filter pandoc-crossref
 
-build: pdf
-
-pdf:
+$(output): $(shell find $(src) -type f)
 	pandoc \
 		$(pandoc_options) \
 		--bibliography $(bibliography) \
 		--metadata-file=$(pandoc_config) \
-		--resource-path=$(resources) \
-		-o $(output) \
-		$(content)
+		--resource-path=$(src) \
+		-o $@ \
+		$(contents)
 
 .PHONY: clean
 
