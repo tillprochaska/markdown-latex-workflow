@@ -1,5 +1,7 @@
 # Language-specific settings
 
+lang: de
+
 # pandoc-citeproc
 reference-section-title: Literaturverzeichnis
 

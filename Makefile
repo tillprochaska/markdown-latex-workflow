@@ -1,10 +1,10 @@
 src = src
 dist = dist
 config = config
+lang = en
 
 contents = $(src)/*.md
 bibliography = $(src)/bibliography/bibliography.bib
-lang = en
 output = $(dist)/output.pdf
 
 pandoc-config = $(config)/pandoc-config.yml $(config)/pandoc-config-$(lang).yml

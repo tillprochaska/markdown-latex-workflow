@@ -1,4 +1,6 @@
 # Language-specific settings
 
+lang: en
+
 # pandoc-citeproc
 reference-section-title: Bibliography
