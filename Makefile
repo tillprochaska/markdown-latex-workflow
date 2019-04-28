@@ -1,26 +1,28 @@
 src = src
+dist = dist
+config = config
+
 contents = $(src)/*.md
 bibliography = $(src)/bibliography/bibliography.bib
 lang = en
-output = dist/output.pdf
+output = $(dist)/output.pdf
 
-pandoc_config = config/pandoc-config-$(lang).yml
-pandoc_options = \
-	--standalone \
-	--number-sections \
-	--toc \
-	--metadata link-citations \
-	--metadata linkReferences \
-	--filter pandoc-crossref
+pandoc-config = $(config)/pandoc-config.yml $(config)/pandoc-config-$(lang).yml
+pandoc_options = --standalone --filter pandoc-crossref
 
-$(output): $(shell find $(src) -type f)
+$(output): $(dist)/pandoc-config.yml $(shell find $(src) -type f)
 	pandoc \
 		$(pandoc_options) \
 		--bibliography $(bibliography) \
-		--metadata-file=$(pandoc_config) \
+		--metadata-file="$(dist)/pandoc-config.yml" \
 		--resource-path=$(src) \
 		-o $@ \
 		$(contents)
+
+# pandoc doesn't support multiple config files, so they
+# need to be merged first.
+$(dist)/pandoc-config.yml: $(pandoc-config)
+	echo "" > $@ && cat $^ >> $@
 
 .PHONY: clean
 

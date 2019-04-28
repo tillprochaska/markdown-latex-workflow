@@ -1,3 +1,9 @@
+# Language-specific settings
+
+# pandoc-citeproc
+reference-section-title: Literaturverzeichnis
+
+# pandoc-crossref
 figPrefix:
   - Abbildung
   - Abbildungen

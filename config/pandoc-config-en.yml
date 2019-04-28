@@ -1,15 +1,4 @@
-figPrefix:
-  - fig.
-  - figs.
-eqnPrefix:
-  - eqn.
-  - eqns.
-tblPrefix:
-  - tbl.
-  - tbls.
-lstPrefix:
-  - lst.
-  - lsts.
-secPrefix:
-  - sec.
-  - secs.
+# Language-specific settings
+
+# pandoc-citeproc
+reference-section-title: Bibliography

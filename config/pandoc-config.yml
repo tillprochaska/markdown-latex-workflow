@@ -1,0 +1,8 @@
+# Generic pandoc settings
+
+header-includes:
+  - \usepackage{mathptmx}
+toc: true
+numbersections: true
+link-citations: true
+linkReferences: true
