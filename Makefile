@@ -4,7 +4,7 @@ config = config
 lang = en
 
 contents = $(src)/*.md
-bibliography = $(src)/bibliography/bibliography.bib
+bibliography = bibliography/bibliography.bib
 output = $(dist)/output.pdf
 
 pandoc-config = $(config)/pandoc-config.yml $(config)/pandoc-config-$(lang).yml
@@ -13,6 +13,7 @@ pandoc_options = --standalone --filter pandoc-crossref
 $(output): $(dist)/pandoc-config.yml $(shell find $(src) -type f)
 	pandoc \
 		$(pandoc_options) \
+		--citeproc \
 		--bibliography $(bibliography) \
 		--metadata-file="$(dist)/pandoc-config.yml" \
 		--resource-path=$(src) \
