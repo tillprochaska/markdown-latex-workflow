@@ -25,7 +25,14 @@ $(output): $(dist)/pandoc-config.yml $(shell find $(src) -type f)
 $(dist)/pandoc-config.yml: $(pandoc-config)
 	echo "" > $@ && cat $^ >> $@
 
-.PHONY: clean
+.PHONY: clean count
 
 clean:
 	rm dist/*
+
+count: $(dist)/pandoc-config.yml $(shell find $(src) -type f)
+	pandoc \
+		--metadata-file="$(dist)/pandoc-config.yml" \
+		--resource-path="$(src)" \
+		--lua-filter scripts/wordcount.lua \
+		$(contents)
