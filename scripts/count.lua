@@ -2,29 +2,22 @@
 -- https://pandoc.org/lua-filters.html#counting-words-in-a-document
 
 words = 0
+chars = 0
 
-wordcount = {
+count = {
   Str = function(el)
     -- we don't count a word if it's entirely punctuation:
     if el.text:match("%P") then
         words = words + 1
+        chars = chars + el.text:len()
     end
-  end,
-
-  Code = function(el)
-    _,n = el.text:gsub("%S+","")
-    words = words + n
-  end,
-
-  CodeBlock = function(el)
-    _,n = el.text:gsub("%S+","")
-    words = words + n
   end
 }
 
 function Pandoc(el)
     -- skip metadata, just count body:
-    pandoc.walk_block(pandoc.Div(el.blocks), wordcount)
-    print(words .. " words in body")
+    pandoc.walk_block(pandoc.Div(el.blocks), count)
+    print(words .. " words")
+    print(chars .. " characters")
     os.exit(0)
 end

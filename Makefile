@@ -34,5 +34,5 @@ count: $(dist)/pandoc-config.yml $(shell find $(src) -type f)
 	pandoc \
 		--metadata-file="$(dist)/pandoc-config.yml" \
 		--resource-path="$(src)" \
-		--lua-filter scripts/wordcount.lua \
+		--lua-filter scripts/count.lua \
 		$(contents)
