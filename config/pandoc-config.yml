@@ -2,7 +2,9 @@
 
 header-includes:
   - \usepackage{mathptmx}
+  - \urlstyle{tt}
 toc: true
 numbersections: true
 link-citations: true
 linkReferences: true
+colorlinks: true
